@@ -25,9 +25,14 @@
 		</div>
 		
 		<script>
-		require(['jquery', 'app'], function($, app){
-			app.test();
-		});
+			require(['jquery', 'app'], function($, app){
+				app.test();
+			});
+			
+			require(['Transaction'], function(Transaction){
+				var x = new Transaction("debit","Samsung Galaxy", 199.95, "1999-12-12", "none");
+				console.log(x); 
+			});
 		</script>
 		
 	</body>
