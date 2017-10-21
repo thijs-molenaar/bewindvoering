@@ -1,14 +1,13 @@
+define(['jquery', 'Person'], function ($, Person) {
 
-define(['account', 'credit', 'debit', 'person'], ), function(account, credit, debit, person)
-{
-	
-	var my = {};
+	"use strict";
 
-	my.addPerson = function (firstname, lastname, dob)
-	{
-		let person = new Person(firstname, lastname, dob);
-		console.log(person);
-	}
+	var app = {};
 	
-	return my;
-}
+	app.test = function(){
+		let xxx = new Person("Pietje", "Puk", "1999-12-12");
+		console.log(xxx);
+	};
+
+    return app;
+});
