@@ -3,6 +3,7 @@
 	<head>
 		<link rel="stylesheet" href="css/bootstrap.css">
 		<link rel="stylesheet" href="css/general.css">
+		<link rel="stylesheet" href="css/persons.css">
 		<script src="js/require.js"></script>
 		<script>
 			requirejs.config({
@@ -11,7 +12,8 @@
 					jquery: 'jquery-3.2.1',
 					popper: 'popper',
 					bootstrap: 'bootstrap',
-					app: 'app'
+					app: 'app',
+					persons: 'persons',
 				}
 			});
 		</script>
@@ -20,20 +22,24 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-xs-12">
-					<h1>Overzicht</h1>
-					<a href="persons.html">Personen</a>
+					<h1 class="title">Overzicht van personen</h1>
+					<div>
+						Selecteer een persoon of <a href="create-person.html" class="btn btn-primary">maak een persoon aan</a>
+					</div>
+					<h2>Personen:</h2>
+					<ul id="persons-ul" class="persons">
+						<!-- loaded by AJAX -->
+					</ul>
 				</div>
 			</div>
 		</div>
 		
 		<script>
-			require(['jquery', 'app'], function($, app){
+			require(['jquery', 'persons'], function($, persons){
 				//app.insertPerson();
-				//app.getPersons();
-			});
-			
-			require(['Transaction'], function(Transaction){
-				var x = new Transaction("debit","Samsung Galaxy", 199.95, "1999-12-12", "none", false);
+				
+				persons.fillPersonsArray();
+				
 			});
 		</script>
 		

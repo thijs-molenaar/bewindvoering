@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<link rel="stylesheet" href="css/bootstrap.css">
+		<link rel="stylesheet" href="css/general.css">
+		<link rel="stylesheet" href="css/create-person.css">
+		<link rel="stylesheet" href="css/bootstrap-datetimepicker.css">
+		
+		<script src="js/require.js"></script>
+		<script>
+			requirejs.config({
+				baseUrl: 'js',
+				paths: {
+					jquery: 'jquery-3.2.1',
+					Popper: 'popper',
+					bootstrap: 'bootstrap',
+					app: 'app',
+					Person: 'person',
+					persons: 'persons',
+					datetimepicker: 'bootstrap-datetimepicker',
+				}
+			});
+		</script>
+	</head>
+	<body>
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12">
+					<h1 class="title">Maak een persoon aan</h1>
+					<form id="create-person">
+						<fieldset>
+							<label for="firstname">Voornaam</label>
+							<input id="firstname" name="firstname" type="text">
+						</fieldset>
+						
+						<fieldset>
+							<label for="lastname">Achternaam</label>
+							<input id="lastname" name="lastname" type="text">
+						</fieldset>
+						
+						<fieldset>
+							<label for"dob">Geboortedatum</label>
+							<input id="dob" name="dob" type="text">
+						</fieldset>
+						
+						<fieldset>
+							<div class="pull-right">
+							<button class="btn btn-secondary">Annuleer</button>
+							<button type="submit" class="btn btn-primary">Maak aan</button>
+							</div>
+						</fieldset>
+						
+					</form>
+				</div>
+			</div>
+		</div>
+	
+		<!-- set up datetime picker -->
+		<script>
+			require(['jquery', 'Popper'], function($, Popper){
+				// reattach popper to global scope
+				window.Popper = Popper;
+			
+				// now call bootstrap...
+				require(['bootstrap', 'datetimepicker'], function(bootstrap, datetimepicker){
+					$("#dob").datetimepicker({format: 'yyyy-mm-dd', autoclose: true, minView: 2, startView: 2});
+				});
+			});
+		</script>
+	
+		<!-- handle form submit -->
+		<script>
+			require(['jquery', 'Person', 'app'], (jquery, Person, app) => {
+				$('#create-person').on('submit', (event) => {
+					event.preventDefault();
+					
+					// create new person from form data
+					let firstname = $('#firstname').val();
+					let lastname = $('#lastname').val();
+					let dob = $('#dob').val();
+					let personToAdd = new Person(firstname, lastname, dob);
+					
+					// insert person into DB
+					// TODO: fix callback for insert function
+					app.insertPerson(personToAdd);
+					
+				});
+			});
+		</script>
+
+	</body>
+</html>

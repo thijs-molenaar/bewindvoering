@@ -1,0 +1,11 @@
+form#create-person > fieldset > input[type="text"] {
+	float: right;
+}
+
+form#create-person > fieldset:not(:last-child) {
+	margin-bottom: 8px;
+}
+
+div.pull-right {
+	float: right;
+}

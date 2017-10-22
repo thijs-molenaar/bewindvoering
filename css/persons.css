@@ -1,0 +1,7 @@
+#persons-ul {
+	list-style: none;
+}
+
+#persons-ul > li {
+	cursor: pointer;
+}

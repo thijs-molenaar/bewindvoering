@@ -4,16 +4,19 @@ define(['jquery', 'Person'], function ($, Person) {
 
 	var app = {};
 	
-	app.getPerson = (id) => {
+	app.getPersons = (callback) => {
+		let url = "http://localhost:5000/people";
 		
+		$.get(url, (response) => {
+			callback(response);
+		});
 	};
 	
 	app.insertPerson = (person) => {
-		let xxx = new Person("Pietje", "Puk", "1999-12-12");
 		let url = "http://localhost:5000/people";
 		
 		$.post({url: url,
-		data: xxx
+		data: person
 		}, (data) => {
 			console.log(data);
 			console.log(data._status);
