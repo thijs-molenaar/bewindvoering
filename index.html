@@ -32,8 +32,9 @@
 				//app.getPersons();
 			});
 			
-			require(['Transaction'], function(Transaction){
-				var x = new Transaction("debit","Samsung Galaxy", 199.95, "1999-12-12", "none", false);
+			require(['Transaction', 'app'], function(Transaction, app){
+				var x = new Transaction("59eca41f0113ca0f97c44618", "test debit transaction","debit", 19995, "1999-12-12");
+				app.insertTransaction(x);
 			});
 		</script>
 		

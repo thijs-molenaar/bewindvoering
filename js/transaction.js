@@ -2,18 +2,17 @@ define(function(){
 
 	"use strict";
 	
-	var Transaction = function (type, name, amount, date, imagePath, hasImage){
+	var Transaction = function (person, title, type, amount, date){
 		
 		if (!(this instanceof Transaction)) {
             throw new TypeError("Transaction constructor cannot be called as a function.");
         }
 		
+		this.person = person;
+		this.title = title;
 		this.type = type;
-		this.name = name;
 		this.amount = amount;
 		this.date = date;
-		this.imagePath = imagePath;
-		this.hasImage = hasImage;
 		
 	}; 
 

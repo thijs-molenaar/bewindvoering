@@ -12,6 +12,17 @@ define(['jquery', 'Person'], function ($, Person) {
 		});
 	};
 	
+	app.insertTransaction = (transaction) => {
+		let url = "http://localhost:5000/transactions";
+		
+		$.post({url: url,
+		data: transaction
+		}, (data) => {
+			console.log(data);
+			console.log(data._status);
+		});
+	};
+	
 	app.insertPerson = (person) => {
 		let url = "http://localhost:5000/people";
 		
